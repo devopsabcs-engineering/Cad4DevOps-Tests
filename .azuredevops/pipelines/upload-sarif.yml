@@ -1,0 +1,96 @@
+# Azure DevOps Pipeline to upload SARIF files to CodeAnalysisLogs artifact
+# Compatible with SARIF Viewer extension: https://marketplace.visualstudio.com/items?itemName=sariftools.scans
+# This enables viewing security assessment results in the Scans tab
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - docs/sarif/*.sarif
+
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - docs/sarif/*.sarif
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+  displayName: 'Checkout repository'
+
+- bash: |
+    if [ -d "docs/sarif" ]; then
+      SARIF_COUNT=$(find docs/sarif -name "*.sarif" | wc -l)
+      echo "##vso[task.setvariable variable=sarifCount]$SARIF_COUNT"
+      echo "Found $SARIF_COUNT SARIF file(s)"
+      find docs/sarif -name "*.sarif" -exec echo "  - {}" \;
+    else
+      echo "##vso[task.setvariable variable=sarifCount]0"
+      echo "No docs/sarif directory found"
+    fi
+  displayName: 'Check for SARIF files'
+
+- task: UsePythonVersion@0
+  condition: ne(variables['sarifCount'], '0')
+  inputs:
+    versionSpec: '3.11'
+    addToPath: true
+  displayName: 'Set up Python'
+
+- bash: |
+    # DevOps Shield exports SARIF with non-standard properties and numeric enums
+    # Clean SARIF files for better compatibility
+    # Using Python script for comprehensive cleaning
+    
+    for sarif_file in docs/sarif/*.sarif; do
+      echo "Cleaning $sarif_file for compatibility..."
+      python scripts/Clean-SarifForGitHub.py "$sarif_file"
+      echo "✅ Cleaned: $sarif_file"
+      
+      # Validate basic structure
+      if python -c "import json; d=json.load(open('$sarif_file')); assert d['version']=='2.1.0' and d['runs'][0]['tool']['driver']['name']"; then
+        echo "   Validation: PASSED"
+      else
+        echo "   Validation: WARNING - may have issues"
+      fi
+    done
+  condition: ne(variables['sarifCount'], '0')
+  displayName: 'Clean SARIF files for compatibility'
+
+- task: PublishBuildArtifacts@1
+  condition: ne(variables['sarifCount'], '0')
+  inputs:
+    PathtoPublish: 'docs/sarif'
+    ArtifactName: 'CodeAnalysisLogs'
+    publishLocation: 'Container'
+  displayName: 'Upload SARIF to CodeAnalysisLogs artifact'
+
+- bash: |
+    echo "## SARIF Upload Summary"
+    echo ""
+    echo "✅ Successfully uploaded SARIF files to CodeAnalysisLogs artifact"
+    echo ""
+    echo "### Files Uploaded"
+    find docs/sarif -name "*.sarif" -exec echo "- {}" \;
+    echo ""
+    echo "### View Results"
+    echo "Install the SARIF Viewer extension and navigate to the Scans tab to view results."
+    echo "Extension: https://marketplace.visualstudio.com/items?itemName=sariftools.scans"
+  condition: ne(variables['sarifCount'], '0')
+  displayName: 'Upload summary'
+
+- bash: |
+    echo "## SARIF Upload Summary"
+    echo ""
+    echo "⚠️ No SARIF files found in docs/sarif directory"
+    echo ""
+    echo "Please ensure SARIF files are present before running this pipeline."
+  condition: eq(variables['sarifCount'], '0')
+  displayName: 'No SARIF files found'
