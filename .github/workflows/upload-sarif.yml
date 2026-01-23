@@ -1,0 +1,106 @@
+# GitHub Actions workflow to upload SARIF files to GitHub Code Scanning
+# This enables viewing DevOps Shield security assessment results in the Security tab
+
+name: Upload SARIF to Code Scanning
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/sarif/*.sarif'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/sarif/*.sarif'
+  workflow_dispatch:
+    inputs:
+      sarif_file:
+        description: 'Path to SARIF file to upload'
+        required: false
+        default: 'docs/sarif/devops-shield-assessment.sarif'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  upload-sarif:
+    name: Upload SARIF
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for SARIF files
+        id: check-sarif
+        run: |
+          if [ -d "docs/sarif" ]; then
+            SARIF_COUNT=$(find docs/sarif -name "*.sarif" | wc -l)
+            echo "sarif_count=$SARIF_COUNT" >> $GITHUB_OUTPUT
+            echo "Found $SARIF_COUNT SARIF file(s)"
+            find docs/sarif -name "*.sarif" -exec echo "  - {}" \;
+          else
+            echo "sarif_count=0" >> $GITHUB_OUTPUT
+            echo "No docs/sarif directory found"
+          fi
+
+      - name: Set up Python
+        if: steps.check-sarif.outputs.sarif_count != '0'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Clean SARIF files for GitHub compatibility
+        if: steps.check-sarif.outputs.sarif_count != '0'
+        run: |
+          # DevOps Shield exports SARIF with non-standard properties and numeric enums
+          # GitHub requires strict SARIF 2.1.0 compliance
+          # Using Python script for comprehensive cleaning (jq was insufficient)
+          
+          for sarif_file in docs/sarif/*.sarif; do
+            echo "Cleaning $sarif_file for GitHub compatibility..."
+            python scripts/Clean-SarifForGitHub.py "$sarif_file"
+            echo "✅ Cleaned: $sarif_file"
+            
+            # Validate basic structure
+            if python -c "import json; d=json.load(open('$sarif_file')); assert d['version']=='2.1.0' and d['runs'][0]['tool']['driver']['name']"; then
+              echo "   Validation: PASSED"
+            else
+              echo "   Validation: WARNING - may have issues"
+            fi
+          done
+
+      - name: Upload SARIF to GitHub Code Scanning
+        if: steps.check-sarif.outputs.sarif_count != '0'
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: ${{ github.event.inputs.sarif_file || 'docs/sarif' }}
+          category: devops-shield-security
+          wait-for-processing: true
+
+      - name: Summary
+        if: steps.check-sarif.outputs.sarif_count != '0'
+        run: |
+          echo "## SARIF Upload Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Successfully uploaded SARIF files to GitHub Code Scanning" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Files Uploaded" >> $GITHUB_STEP_SUMMARY
+          find docs/sarif -name "*.sarif" -exec echo "- \`{}\`" \; >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### View Results" >> $GITHUB_STEP_SUMMARY
+          echo "Navigate to **Security** > **Code scanning** to view the results." >> $GITHUB_STEP_SUMMARY
+
+      - name: No SARIF files found
+        if: steps.check-sarif.outputs.sarif_count == '0'
+        run: |
+          echo "## SARIF Upload Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ No SARIF files found in docs/sarif/" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "To upload a SARIF file:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Export from DevOps Shield using MCP tools or API" >> $GITHUB_STEP_SUMMARY
+          echo "2. Save to \`docs/sarif/\` directory" >> $GITHUB_STEP_SUMMARY
+          echo "3. Commit and push to trigger this workflow" >> $GITHUB_STEP_SUMMARY
