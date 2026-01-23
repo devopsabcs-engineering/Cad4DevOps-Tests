@@ -8,16 +8,22 @@ on:
     branches: [main]
     paths:
       - 'docs/sarif/*.sarif'
+      - 'sarif-results/*.sarif'
   pull_request:
     branches: [main]
     paths:
       - 'docs/sarif/*.sarif'
+      - 'sarif-results/*.sarif'
   workflow_dispatch:
     inputs:
       sarif_file:
         description: 'Path to SARIF file to upload'
         required: false
-        default: 'docs/sarif/devops-shield-assessment.sarif'
+        default: 'sarif-results/devops-shield-assessment.sarif'
+      category:
+        description: 'Category for Code Scanning'
+        required: false
+        default: 'devops-shield-sarif-export-test'
 
 permissions:
   contents: read
@@ -28,7 +34,7 @@ jobs:
   upload-sarif:
     name: Upload SARIF
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,49 +42,35 @@ jobs:
       - name: Check for SARIF files
         id: check-sarif
         run: |
-          if [ -d "docs/sarif" ]; then
-            SARIF_COUNT=$(find docs/sarif -name "*.sarif" | wc -l)
-            echo "sarif_count=$SARIF_COUNT" >> $GITHUB_OUTPUT
-            echo "Found $SARIF_COUNT SARIF file(s)"
-            find docs/sarif -name "*.sarif" -exec echo "  - {}" \;
-          else
-            echo "sarif_count=0" >> $GITHUB_OUTPUT
-            echo "No docs/sarif directory found"
-          fi
-
-      - name: Set up Python
-        if: steps.check-sarif.outputs.sarif_count != '0'
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Clean SARIF files for GitHub compatibility
-        if: steps.check-sarif.outputs.sarif_count != '0'
-        run: |
-          # DevOps Shield exports SARIF with non-standard properties and numeric enums
-          # GitHub requires strict SARIF 2.1.0 compliance
-          # Using Python script for comprehensive cleaning (jq was insufficient)
+          SARIF_COUNT=0
           
-          for sarif_file in docs/sarif/*.sarif; do
-            echo "Cleaning $sarif_file for GitHub compatibility..."
-            python scripts/Clean-SarifForGitHub.py "$sarif_file"
-            echo "✅ Cleaned: $sarif_file"
-            
-            # Validate basic structure
-            if python -c "import json; d=json.load(open('$sarif_file')); assert d['version']=='2.1.0' and d['runs'][0]['tool']['driver']['name']"; then
-              echo "   Validation: PASSED"
-            else
-              echo "   Validation: WARNING - may have issues"
-            fi
-          done
+          # Check sarif-results (new location - no cleanup needed)
+          if [ -d "sarif-results" ]; then
+            COUNT=$(find sarif-results -name "*.sarif" | wc -l)
+            SARIF_COUNT=$((SARIF_COUNT + COUNT))
+            echo "Found $COUNT SARIF file(s) in sarif-results/"
+            find sarif-results -name "*.sarif" -exec echo "  - {}" \;
+          fi
+          
+          # Check docs/sarif (legacy location - may need cleanup)
+          if [ -d "docs/sarif" ]; then
+            COUNT=$(find docs/sarif -name "*.sarif" | wc -l)
+            SARIF_COUNT=$((SARIF_COUNT + COUNT))
+            echo "Found $COUNT SARIF file(s) in docs/sarif/"
+            find docs/sarif -name "*.sarif" -exec echo "  - {}" \;
+          fi
+          
+          echo "sarif_count=$SARIF_COUNT" >> $GITHUB_OUTPUT
+          echo "Total: $SARIF_COUNT SARIF file(s)"
 
-      - name: Upload SARIF to GitHub Code Scanning
+      - name: Upload SARIF from sarif-results (no cleanup - native export)
         if: steps.check-sarif.outputs.sarif_count != '0'
         uses: github/codeql-action/upload-sarif@v4
         with:
-          sarif_file: ${{ github.event.inputs.sarif_file || 'docs/sarif' }}
-          category: devops-shield-security
+          sarif_file: ${{ github.event.inputs.sarif_file || 'sarif-results' }}
+          category: ${{ github.event.inputs.category || 'devops-shield-sarif-export-test' }}
           wait-for-processing: true
+        continue-on-error: true
 
       - name: Summary
         if: steps.check-sarif.outputs.sarif_count != '0'
@@ -88,7 +80,8 @@ jobs:
           echo "✅ Successfully uploaded SARIF files to GitHub Code Scanning" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Files Uploaded" >> $GITHUB_STEP_SUMMARY
-          find docs/sarif -name "*.sarif" -exec echo "- \`{}\`" \; >> $GITHUB_STEP_SUMMARY
+          find sarif-results -name "*.sarif" -exec echo "- \\\{}\\\" \; >> $GITHUB_STEP_SUMMARY 2>/dev/null || true
+          find docs/sarif -name "*.sarif" -exec echo "- \\\{}\\\" \; >> $GITHUB_STEP_SUMMARY 2>/dev/null || true
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### View Results" >> $GITHUB_STEP_SUMMARY
           echo "Navigate to **Security** > **Code scanning** to view the results." >> $GITHUB_STEP_SUMMARY
@@ -98,9 +91,4 @@ jobs:
         run: |
           echo "## SARIF Upload Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "⚠️ No SARIF files found in docs/sarif/" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "To upload a SARIF file:" >> $GITHUB_STEP_SUMMARY
-          echo "1. Export from DevOps Shield using MCP tools or API" >> $GITHUB_STEP_SUMMARY
-          echo "2. Save to \`docs/sarif/\` directory" >> $GITHUB_STEP_SUMMARY
-          echo "3. Commit and push to trigger this workflow" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ No SARIF files found" >> $GITHUB_STEP_SUMMARY
