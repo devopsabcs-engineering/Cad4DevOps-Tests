@@ -1,0 +1,1988 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.6.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "DevOpsShield-SecurityScanner",
+          "organization": "CAD4DevOps Inc. (DevOps Shield)",
+          "product": "DevOps Shield",
+          "shortDescription": {
+            "text": "DevOps Shield - An innovative cybersecurity platform for DevOps.",
+            "markdown": "DevOps Shield - An innovative cybersecurity platform for DevOps."
+          },
+          "fullDescription": {
+            "text": "DevOps Shield - Your DevOps. We Protect It. DevOps Shield is the ultimate cybersecurity platform designed to secure your Azure DevOps, GitHub, and GitLab environments. *DevSecOps Security Scanner. *Continuous DevOps Security Monitoring. *Policy Management. *Expert Advisory."
+          },
+          "fullName": "DevOps Shield Security Scanner",
+          "version": "1.0.0.0",
+          "semanticVersion": "1.0.0.0",
+          "downloadUri": "https://hub.docker.com/r/devopsshield/devopsshield",
+          "informationUri": "https://www.devopsshield.com/",
+          "rules": [
+            {
+              "id": "DOS1075",
+              "name": "AdoOrganizationPipelineSettingsDisableBuildingPullRequestsFromForkedRepositories",
+              "fullDescription": {
+                "text": "Limit building pull requests from forked GitHub repositories. Disable building pull requests from forked repositories. With this enabled, No pipeline will build pull requests from forked repositories. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/github#contributions-from-forks"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Organization Settings. \n2. Open the Settings link under Pipelines. \n3. Under the 'Triggers' section, turn 'On' the setting 'Limit building pull requests from forked GitHub repositories'. \n4. Turn 'On' the setting 'Disable building pull requests from forked repositories'."
+              },
+              "shortDescription": {
+                "text": "DOS1075 - Organization - Pipeline Settings - Disable building pull requests from forked repositories (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1075"
+            },
+            {
+              "id": "DOS1120",
+              "name": "AdoOrganizationPipelineSettingsLimitNonReleasePipelineScope",
+              "fullDescription": {
+                "text": "Limit job authorization scope to current project for non-release pipelines. If enabled, scope of access for all pipelines reduces to the current project. Non-Release Pipelines can run with collection scoped access tokens unless this option is enabled. With this option enabled, you can reduce the scope of access for all non-release pipelines to the current project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos https://learn.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens#job-authorization-scope"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Limit job authorization scope to current project for non-release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS1120 - Organization - Pipeline Settings - Enforce job authorization scope to current project for non-release pipelines (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1120"
+            },
+            {
+              "id": "DOS1130",
+              "name": "AdoOrganizationPipelineSettingsLimitPipelineScopeToReferencedRepos",
+              "fullDescription": {
+                "text": "Protect access to repositories in YAML pipelines. Restricts the scope of access for all pipelines to only repositories explicitly referenced by the pipeline. Apply checks and approvals when accessing repositories from YAML pipelines. Also, generate a job access token that is scoped to repositories that are explicitly referenced in the YAML pipeline. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos https://learn.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens#protect-access-to-repositories-in-yaml-pipelines https://devblogs.microsoft.com/devops/pipeline-stealing-another-repo/"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Protect access to repositories in YAML pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS1130 - Organization - Pipeline Settings - Enforce access to repositories in YAML pipelines. (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1130"
+            },
+            {
+              "id": "DOS1140",
+              "name": "AdoOrganizationPipelineSettingsLimitReleasePipelineScope",
+              "fullDescription": {
+                "text": "Limit job authorization scope to current project for release pipelines. Release pipelines can run with collection scoped access tokens unless this option is enabled. With this option enabled, you can reduce the scope of access for all release pipelines to the current project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos https://learn.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens#job-authorization-scope"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Limit job authorization scope to current project for release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS1140 - Organization - Pipeline Settings - Enforce job authorization scope to current project for release pipelines (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1140"
+            },
+            {
+              "id": "DOS1180",
+              "name": "AdoOrganizationPoliciesSecurityDontAllowPublicProjects",
+              "fullDescription": {
+                "text": "Allow public projects should be disabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/projects/create-project https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#project-level-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Security policies. \n4. Turn 'Off' the setting 'Allow public projects'."
+              },
+              "shortDescription": {
+                "text": "DOS1180 - Organization - Disallow Anonymous Access (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1180"
+            },
+            {
+              "id": "DOS1210",
+              "name": "AdoOrganizationPoliciesSecurityEnableProtectionsWhenUsingPublicPackages",
+              "fullDescription": {
+                "text": "Additional protections when using public package registries. Learn more: https://devblogs.microsoft.com/devops/changes-to-azure-artifact-upstream-behavior https://learn.microsoft.com/en-us/azure/devops/artifacts/concepts/upstream-sources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Security policies. \n4. Turn 'On' the setting 'Additional protections when using public package registries'."
+              },
+              "shortDescription": {
+                "text": "DOS1210 - Organization - Enable Additional protections when using public package registries (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1210"
+            },
+            {
+              "id": "DOS1220",
+              "name": "AdoOrganizationPoliciesUserDisableGuestUsers",
+              "fullDescription": {
+                "text": "External guest access should be disabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#external-guest-access https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/add-external-user"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. User policies. \n4. Turn 'Off' the setting 'External guest access'."
+              },
+              "shortDescription": {
+                "text": "DOS1220 - Organization - Disallow Guest Users (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1220"
+            },
+            {
+              "id": "DOS1010",
+              "name": "AdoOrganizationArtifactsSettingsRestrictWhoCanCreateFeeds",
+              "fullDescription": {
+                "text": "Allow only administrators to create feeds in your organization. Learn more: https://learn.microsoft.com/en-us/azure/devops/artifacts/feeds/feed-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Artifacts. \n2. Click on Azure Artifacts Settings button. \n3. Review 'Who can create feeds' and select 'Only administrators and these users can create feeds'. Grant this permission to a limited set of users/groups."
+              },
+              "shortDescription": {
+                "text": "DOS1010 - Organization - Artifacts - Restrict feeds creation to only administrators (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1010"
+            },
+            {
+              "id": "DOS1020",
+              "name": "AdoOrganizationExtensionsRestrictToTrustedPublishers",
+              "fullDescription": {
+                "text": "Allow extensions only from trusted publishers to be installed in your organization. Running extensions from untrusted source can lead to all type of attacks and data loss. Learn more: https://learn.microsoft.com/en-us/azure/devops/extend/overview"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Select Extensions. \n3. Review all installed extensions in the organization."
+              },
+              "shortDescription": {
+                "text": "DOS1020 - Organization - Extensions - Restrict extensions to only trusted publishers (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1020"
+            },
+            {
+              "id": "DOS1030",
+              "name": "AdoOrganizationExtensionsSecurityrolesRestrictExtensionManagerRoleToAdmins",
+              "fullDescription": {
+                "text": "Allow only administrators to manage extensions in your organization. Review the users who have permission to manage extensions. Users with extension manager role can install/uninstall extensions and approve/decline extension requests. Learn more: https://learn.microsoft.com/en-us/azure/devops/marketplace/grant-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Select Extensions. \n3. Click on the Security button. \n4. Review all 'Manager' role assignments."
+              },
+              "shortDescription": {
+                "text": "DOS1030 - Organization - Extensions - Security Roles - Restrict extension manager role to only administrators (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1030"
+            },
+            {
+              "id": "DOS1050",
+              "name": "AdoOrganizationPipelineAgentpoolDontEnableAutoprovisioning",
+              "fullDescription": {
+                "text": "Do not enable auto-provisioning of the agent pool in new projects. Enabling the auto-provisioning will import automatically the agent pool for all new projects. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Agent pools. \n3. Select an agent pool. \n4. Select the Settings tab. \n5. Turn 'Off' the setting 'Auto-provision this agent pool in new projects'."
+              },
+              "shortDescription": {
+                "text": "DOS1050 - Organization - Disable auto-provisioning of agent pools (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1050"
+            },
+            {
+              "id": "DOS1060",
+              "name": "AdoOrganizationPipelineAgentpoolEnableAutoUpdate",
+              "fullDescription": {
+                "text": "Agent update settings - Allow agents in the agent pool to automatically update. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Agent pools. \n3. Select an agent pool. \n4. Select the Settings tab. \n5. Turn 'On' the setting 'Allow agents in this pool to automatically update'."
+              },
+              "shortDescription": {
+                "text": "DOS1060 - Organization - Enable auto-update of agents in the agent pool (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1060"
+            },
+            {
+              "id": "DOS1115",
+              "name": "AdoOrganizationPipelineSettingsEnableShellTasksArgumentsValidation",
+              "fullDescription": {
+                "text": "Enable shell tasks args sanitizing. When this is enabled, argument parameters for built-in shell tasks are validated to prevent additional shell commands from being executed. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/inputs#shellTasksValidation"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Organization Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Enable shell tasks arguments validation'."
+              },
+              "shortDescription": {
+                "text": "DOS1115 - Organization - Pipeline Settings - Enable shell tasks arguments validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1115"
+            },
+            {
+              "id": "DOS1150",
+              "name": "AdoOrganizationPipelineSettingsLimitSettableVariablesAtQueueTime",
+              "fullDescription": {
+                "text": "Enforce settable variables. If enabled, only those variables that are explicitly marked as 'Settable at queue time' can be set at queue time. You can set any variables at queue time unless this option is enabled. With this option enabled, only those variables that are explicitly marked as 'Settable at queue time' can be set. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/inputs https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Limit variables that can be set at queue time'."
+              },
+              "shortDescription": {
+                "text": "DOS1150 - Organization - Pipeline Settings - Limit variables that can be set at queue time (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1150"
+            },
+            {
+              "id": "DOS1160",
+              "name": "AdoOrganizationPoliciesAppconnectionDisableOauthAppAccess",
+              "fullDescription": {
+                "text": "Third-party application access via OAuth should be disabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/change-application-access-policies"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Application connection policies. \n4. Turn 'Off' the setting 'Third-party application access via OAuth'."
+              },
+              "shortDescription": {
+                "text": "DOS1160 - Organization - Disallow OAuth Authentication (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1160"
+            },
+            {
+              "id": "DOS1170",
+              "name": "AdoOrganizationPoliciesAppconnectionDisableSshAccess",
+              "fullDescription": {
+                "text": "SSH authentication should be disabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Application connection policies. \n4. Turn 'Off' the setting 'SSH authentication'."
+              },
+              "shortDescription": {
+                "text": "DOS1170 - Organization - Disallow SSH authentication (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1170"
+            },
+            {
+              "id": "DOS1190",
+              "name": "AdoOrganizationPoliciesSecurityEnableAadConditionalAccess",
+              "fullDescription": {
+                "text": "Enable Azure Active Directory Conditional Access Policy Validation. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/change-application-access-policies"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Security policies. \n4. Turn 'On' the setting 'Enable Azure Active Directory Conditional Access Policy Validation'."
+              },
+              "shortDescription": {
+                "text": "DOS1190 - Organization - Enforce AAD Conditional Access (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1190"
+            },
+            {
+              "id": "DOS1200",
+              "name": "AdoOrganizationPoliciesSecurityEnableLogAuditEvents",
+              "fullDescription": {
+                "text": "Log Audit Events. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#review-auditing-events https://learn.microsoft.com/en-us/azure/devops/organizations/audit/azure-devops-auditing"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. Security policies. \n4. Turn 'On' the setting 'Log Audit Events'. \n5. Make sure you configure at least one stream under General -> Auditing -> Streams."
+              },
+              "shortDescription": {
+                "text": "DOS1200 - Organization - Enable Log Audit Events (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1200"
+            },
+            {
+              "id": "DOS1230",
+              "name": "AdoOrganizationPoliciesUserDisableRequestAccesstoken",
+              "fullDescription": {
+                "text": "Request access should be disabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/disable-request-access-policy"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. User policies. \n4. Turn 'Off' the setting 'Request access'."
+              },
+              "shortDescription": {
+                "text": "DOS1230 - Organization - Disallow Request Access Token (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1230"
+            },
+            {
+              "id": "DOS1240",
+              "name": "AdoOrganizationPoliciesUserDisableTeamAdminsInvitations",
+              "fullDescription": {
+                "text": "Disallow team and project administrators to invite new users. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/restrict-invitations"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Policies. \n3. User policies. \n4. Turn 'Off' the setting 'Allow team and project administrators to invite new users'."
+              },
+              "shortDescription": {
+                "text": "DOS1240 - Organization - Disallow team and project administrators to invite new users (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1240"
+            },
+            {
+              "id": "DOS1250",
+              "name": "AdoOrganizationUsersRemoveInactiveGuestUsers",
+              "fullDescription": {
+                "text": "Review inactive guest users and revoke their access. Inactive guest users must be removed to reduce the attack surface. Ensure only legitimate users have access to your organization resources. Go to Organization Settings -> Users. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#removing-users"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Select Users. \n3. Under 'All users' tab, filter by 'AAD User Type' as 'Guest User'. \n4. Review the 'Last Accessed' column, then revoke access for inactive users."
+              },
+              "shortDescription": {
+                "text": "DOS1250 - Organization - Users - Remove access for inactive guest users (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1250"
+            },
+            {
+              "id": "DOS1300",
+              "name": "AdoOrganizationAdvancedsecurityEnableForNewProjects",
+              "fullDescription": {
+                "text": "Automatically enable Advanced Security for new projects. New projects in this organization will be set to automatically enable Advanced Security on new Git repositories by default. Settings can be changed on individual projects and repositories at any time. Advanced Security is billed based on the number of unique active committers across all enabled repositories in your subscription. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/configure-github-advanced-security-features"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Select Repos -> Repositories. \n3. Turn 'On' the setting 'Automatically enable Advanced Security for new projects'."
+              },
+              "shortDescription": {
+                "text": "DOS1300 - Organization - Enable Advanced Security for new Projects (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1300"
+            },
+            {
+              "id": "DOS1040",
+              "name": "AdoOrganizationLimitMinMaxAdmins",
+              "fullDescription": {
+                "text": "Your organization should have at least 2 and at most 5 Project Collection Administrators. To reduce the risk of losing admin access, you may want to ensure at least 2 users are part of the Project Collection Administrators group. Limit the number of administrators to no more than 5 for your organization. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/look-up-project-collection-administrators"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Security -> Permissions. \n3. Groups - Select ' Project Collection Administrators'. \n4. Review all members of this group."
+              },
+              "shortDescription": {
+                "text": "DOS1040 - Organization - An organization must have at least 2 and no more than 5 administrators (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1040"
+            },
+            {
+              "id": "DOS1080",
+              "name": "AdoOrganizationPipelineSettingsDisableCreationOfClassicBuildPipelines",
+              "fullDescription": {
+                "text": "Enable the setting 'Disable creation of classic build pipelines'. When this is enabled, no classic build pipelines can be created / imported. Existing ones will continue to work. Learn more: https://devblogs.microsoft.com/devops/disable-creation-of-classic-pipelines "
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Disable creation of classic build pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS1080 - Organization - Pipeline Settings - Disable creation of classic build pipelines (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1080"
+            },
+            {
+              "id": "DOS1090",
+              "name": "AdoOrganizationPipelineSettingsDisableCreationOfClassicReleasePipelines",
+              "fullDescription": {
+                "text": "Enable the setting 'Disable creation of classic release pipelines'. When this is enabled, no classic release pipelines, task groups, and deployment groups can be created / imported. Existing ones will continue to work. Learn more: https://devblogs.microsoft.com/devops/disable-creation-of-classic-pipelines "
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Disable creation of classic release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS1090 - Organization - Pipeline Settings - Disable creation of classic release pipelines (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1090"
+            },
+            {
+              "id": "DOS1260",
+              "name": "AdoOrganizationUsersReviewAndRevokeAccessForInactiveUsers",
+              "fullDescription": {
+                "text": "Review inactive users and revoke their access. Inactive users must be removed to reduce the attack surface. Ensure only legitimate users have access to your organization resources. Go to Organization Settings -> Users. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#removing-users"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Select Users. \n3. Under 'All users' tab, review and filter the 'Last Accessed' column, then revoke access for inactive users."
+              },
+              "shortDescription": {
+                "text": "DOS1260 - Organization - Users - Revoke access for inactive users (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1260"
+            },
+            {
+              "id": "DOS1070",
+              "name": "AdoOrganizationPipelineSettingsDisableAnonymousAccessToBadges",
+              "fullDescription": {
+                "text": "Status badges are private. Anonymous users can access the status badge API for all pipelines unless this option is enabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?#add-a-status-badge-to-your-repository"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Disable anonymous access to badges'."
+              },
+              "shortDescription": {
+                "text": "DOS1070 - Organization - Pipeline Settings - Disable anonymous access to badges (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1070"
+            },
+            {
+              "id": "DOS1100",
+              "name": "AdoOrganizationPipelineSettingsDisableImpliedYamlCiTrigger",
+              "fullDescription": {
+                "text": "Prevent unintended pipeline runs. Enable the setting 'Disable implied YAML CI trigger'. Trigger a pipeline only for code changes that match its trigger section. Do not trigger the pipeline if the trigger section is missing. Learn more: https://learn.microsoft.com/en-us/azure/devops/release-notes/2023/sprint-227-update#prevent-unintended-pipeline-runs https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/trigger"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Disable implied YAML CI trigger'."
+              },
+              "shortDescription": {
+                "text": "DOS1100 - Organization - Pipeline Settings - Disable implied YAML CI trigger to prevent unintended pipeline runs (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1100"
+            },
+            {
+              "id": "DOS1110",
+              "name": "AdoOrganizationPipelineSettingsDisableStageChooser",
+              "fullDescription": {
+                "text": "Enable the setting 'Disable stage chooser'. With this enabled, users will not be able to select stages to skip from the Queue Pipeline panel. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Organization Settings. \n2. Click on Pipelines -> Settings. \n3. Turn 'On' the setting 'Disable stage chooser'."
+              },
+              "shortDescription": {
+                "text": "DOS1110 - Organization - Pipeline Settings - Disable stage chooser (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1110"
+            },
+            {
+              "id": "DOS2120",
+              "name": "AdoProjectAllrepositoriesSecuritypermissionsDontAllowBypassPolicies",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. This policy will ensure that no user has permissions to bypass policies. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#secure-azure-repos https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Security tab. \n4. On the page 'User permissions', ensure the 'Bypass policies when completing pull requests' and 'Bypass policies when pushing' user permisions are 'Not set' or 'Deny'."
+              },
+              "shortDescription": {
+                "text": "DOS2120 - Project - All Repositories - Security Permissions - Do not allow bypassing policies (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2120"
+            },
+            {
+              "id": "DOS2165",
+              "name": "AdoProjectPipelineSettingsDisableBuildingPullRequestsFromForkedRepositories",
+              "fullDescription": {
+                "text": "Limit building pull requests from forked GitHub repositories. Disable building pull requests from forked repositories. With this enabled, No pipeline will build pull requests from forked repositories. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/github#contributions-from-forks"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Under the 'Triggers' section, turn 'On' the setting 'Limit building pull requests from forked GitHub repositories'. \n4. Turn 'On' the setting 'Disable building pull requests from forked repositories'."
+              },
+              "shortDescription": {
+                "text": "DOS2165 - Project - Pipeline Settings - Disable building pull requests from forked repositories (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2165"
+            },
+            {
+              "id": "DOS2200",
+              "name": "AdoProjectPipelineSettingsLimitNonReleasePipelineScope",
+              "fullDescription": {
+                "text": "Limit job authorization scope to current project for non-release pipelines. If enabled, scope of access for all pipelines reduces to the current project. Non-Release Pipelines can run with collection scoped access tokens unless this option is enabled. With this option enabled, you can reduce the scope of access for all non-release pipelines to the current project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos https://learn.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens#job-authorization-scope"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Limit job authorization scope to current project for non-release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS2200 - Project - Pipeline Settings - Enforce job authorization scope to current project for non-release pipelines (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2200"
+            },
+            {
+              "id": "DOS2210",
+              "name": "AdoProjectPipelineSettingsLimitPipelineScopeToReferencedRepos",
+              "fullDescription": {
+                "text": "Protect access to repositories in YAML pipelines. Restricts the scope of access for all pipelines to only repositories explicitly referenced by the pipeline. Apply checks and approvals when accessing repositories from YAML pipelines. Also, generate a job access token that is scoped to repositories that are explicitly referenced in the YAML pipeline. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Protect access to repositories in YAML pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS2210 - Project - Pipeline Settings - Enforce access to repositories in YAML pipelines. (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2210"
+            },
+            {
+              "id": "DOS2220",
+              "name": "AdoProjectPipelineSettingsLimitReleasePipelineScope",
+              "fullDescription": {
+                "text": "Limit job authorization scope to current project for release pipelines. Release pipelines can run with collection scoped access tokens unless this option is enabled. With this option enabled, you can reduce the scope of access for all release pipelines to the current project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Limit job authorization scope to current project for release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS2220 - Project - Pipeline Settings - Enforce job authorization scope to current project for release pipelines (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2220"
+            },
+            {
+              "id": "DOS2330",
+              "name": "AdoProjectPrivateVisibility",
+              "fullDescription": {
+                "text": "Ensure project visibility is always private. Private projects require users to be granted access to the project and signed in to access the services. Learn more: https://docs.microsoft.com/en-us/azure/devops/organizations/public/make-project-public"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Project Overview -> Summary. \n2. On top right, make sure the project is labeled 'Private'."
+              },
+              "shortDescription": {
+                "text": "DOS2330 - Project - Ensure project visibility is set to Private (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2330"
+            },
+            {
+              "id": "DOS1310",
+              "name": "AdoProjectAdvancedsecurityEnableForNewRepos",
+              "fullDescription": {
+                "text": "Automatically enable Advanced Security for new repositories. New repositories in this project will be initialized with Advanced Security enabled by default. Advanced Security can be disabled on a repository at any time. Advanced Security is billed based on the number of unique active committers across all enabled repositories in your subscription. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/configure-github-advanced-security-features"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Project Settings. \n2. Select Repos -> Repositories. \n3. Select the Settings tab. \n4. Turn 'On' the setting 'Automatically enable Advanced Security for new repositories'."
+              },
+              "shortDescription": {
+                "text": "DOS1310 - Project - Enable Advanced Security for new Repositories (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1310"
+            },
+            {
+              "id": "DOS2010",
+              "name": "AdoProjectAllrepositoriesBranchpolicyAutomaticallyIncludeCodeReviewers",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Automatically included reviewers' branch policy, so that you can automatically add reviewers to pull requests that change files in specific directories and files, or to all pull requests in a repo. This policy will ensure that required reviewers are added for modified files matching specified patterns. Designate code reviewers to automatically include when pull requests change certain areas of code. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#automatically-include-code-reviewers https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Automatically included reviewers' section, click on '+' button to add a new reviewer policy. \n6. Ensure at least one policy is enabled."
+              },
+              "shortDescription": {
+                "text": "DOS2010 - Project - All Repositories - Branch Policies - Automatically include code reviewers (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2010"
+            },
+            {
+              "id": "DOS2020",
+              "name": "AdoProjectAllrepositoriesBranchpolicyCheckForCommentResolution",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Check for comment resolution' branch policy, so that you require all PR comments to be resolved when pull requests are completed. This policy checks to see that all comments have been resolved on pull requests. Block pull requests from being completed while any comments are active. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#check-for-comment-resolution https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Branch Policies' section, turn 'On' the policy 'Check for comment resolution'. \n6. Configure the policy to be 'Required'."
+              },
+              "shortDescription": {
+                "text": "DOS2020 - Project - All Repositories - Branch Policies - Check for comment resolution (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2020"
+            },
+            {
+              "id": "DOS2030",
+              "name": "AdoProjectAllrepositoriesBranchpolicyCheckForLinkedWorkItems",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Check for linked work items' branch policy, so that you require associations between PRs and work items when pull requests are completed. This policy will ensure work item management tracking by requiring associations between PRs and work items. Block pull requests from being completed unless they have at least one linked work item. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#check-for-linked-work-items https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Branch Policies' section, turn 'On' the policy 'Check for linked work items'. \n6. Configure the policy to be 'Required'."
+              },
+              "shortDescription": {
+                "text": "DOS2030 - Project - All Repositories - Branch Policies - Check for linked work items (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2030"
+            },
+            {
+              "id": "DOS2040",
+              "name": "AdoProjectAllrepositoriesBranchpolicyLimitMergeTypes",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Limit merge types' branch policy, so that you control the branch history by limiting the available types of merge when pull requests are completed. This policy will ensure consistent branch history by enforcing a merge strategy for pull request completion. Defaults to 'Basic merge (no fast-forward)' - Preserves history exactly as it happened during development. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#limit-merge-types https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Branch Policies' section, turn 'On' the policy 'Limit merge types'. \n6. Configure the policy to match your standards and update the policy definition."
+              },
+              "shortDescription": {
+                "text": "DOS2040 - Project - All Repositories - Branch Policies - Limit merge types (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2040"
+            },
+            {
+              "id": "DOS2050",
+              "name": "AdoProjectAllrepositoriesBranchpolicyRequireBuildValidation",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Build Validation' branch policy, so that you require pull request changes to build successfully before the PR can complete. The build policy evaluates the build results to determine whether the PR can be completed. Build must succeed in order to complete pull requests. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#build-validation https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Build Validation' section, click on '+' button to add a new build policy. \n6. Ensure at least one policy is enabled."
+              },
+              "shortDescription": {
+                "text": "DOS2050 - Project - All Repositories - Branch Policies - Require Build Validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2050"
+            },
+            {
+              "id": "DOS2060",
+              "name": "AdoProjectAllrepositoriesBranchpolicyRequireMinReviewers",
+              "fullDescription": {
+                "text": "Protect important branches across all repositories in this project. Enable the 'Require a minimum number of reviewers' branch policy, so that every pull request gets reviewed by at least two approvers. This policy will ensure that a minimum number of reviewers have approved a pull request before completion. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#repositories-and-branches https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#require_reviewers https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Branch Policies' section, click on a branch from the list or click '+' to add a branch protection across all repositories. \n5. On the page 'Cross-Repository policies for' selected branch, under 'Branch Policies' section, turn 'On' the policy 'Require a minimum number of reviewers'. \n6. Configure the policy to match your standards and the current policy definition: Minimum number of reviewers: 2, Prohibit the most recent pusher from approving their own changes: ON, When new changes are pushed: ON (Require at least one approval on the last iteration)."
+              },
+              "shortDescription": {
+                "text": "DOS2060 - Project - All Repositories - Branch Policies - Require a minimum number of reviewers (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2060"
+            },
+            {
+              "id": "DOS2080",
+              "name": "AdoProjectAllrepositoriesRepopolicyCommitAuthorEmailValidation",
+              "fullDescription": {
+                "text": "Enable the 'Commit author email validation' branch policy, so that you block commits to a repository by commit authors whose email addresses don't match a pattern. This policy will block pushes from including commits where the author email does not match the specified patterns. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#commit-author-email-validation-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Repository Policies' section, turn 'On' the policy 'Commit author email validation' and configure the author email patterns."
+              },
+              "shortDescription": {
+                "text": "DOS2080 - Project - All Repositories - Repository Policies - Commit author email validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2080"
+            },
+            {
+              "id": "DOS2135",
+              "name": "AdoProjectPipelineChecksEnvironmentConfigureApprovalsForProduction",
+              "fullDescription": {
+                "text": "Approvers should grant approval for deployment. Extend pipeline protection by configuring a manual approval check on each of your resources. This will automatically stop your pipeline from running on top of any user branches. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on 'Approvals and checks' tab. \n4. Click on '+' button to add a new 'Approvals' check and choose your 'Approvers'. \n6. Click 'Create' to add the check."
+              },
+              "shortDescription": {
+                "text": "DOS2135 - Project - Pipeline Protected Resources - Checks - Require approvals on each production environment (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2135"
+            },
+            {
+              "id": "DOS2140",
+              "name": "AdoProjectPipelineChecksEnvironmentConfigureBranchControlCheckForProduction",
+              "fullDescription": {
+                "text": "Allow deployments based on branches linked to the run. Extend pipeline protection by configuring a protected branch check on each of your resources. This will automatically stop your pipeline from running on top of any user branches. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on 'Approvals and checks' tab. \n4. Click on '+' button to add a new 'Branch control' check."
+              },
+              "shortDescription": {
+                "text": "DOS2140 - Project - Pipeline Protected Resources - Checks - Configure a protected branch check on each production environment (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2140"
+            },
+            {
+              "id": "DOS2145",
+              "name": "AdoProjectPipelineChecksEnvironmentProductionProtectWithChecks",
+              "fullDescription": {
+                "text": "Checks allow you to manage how this resource is used. Extend pipeline protection by configuring checks on each of your resources. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on 'Approvals and checks' tab. \n4. Click on 'Add your first check' / 'View all checks' to add one or more checks. \n5. Click 'Create' to add the check."
+              },
+              "shortDescription": {
+                "text": "DOS2145 - Project - Pipeline Protected Resources - Checks - Protect your production environment with approvals and checks (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2145"
+            },
+            {
+              "id": "DOS2150",
+              "name": "AdoProjectPipelineChecksServiceconnectionConfigureApprovalsForProduction",
+              "fullDescription": {
+                "text": "Approvers should grant approval for deployment. Extend pipeline protection by configuring a manual approval check on your production resources. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on 'Approvals and checks' tab. \n5. Add a new 'Approvals' check and choose your 'Approvers'. \n6. Click 'Create' to add the check."
+              },
+              "shortDescription": {
+                "text": "DOS2150 - Project - Pipeline Protected Resources - Checks - Require approvals on each production service connection (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2150"
+            },
+            {
+              "id": "DOS2152",
+              "name": "AdoProjectPipelineChecksServiceconnectionConfigureBranchControlCheckForProduction",
+              "fullDescription": {
+                "text": "Allow deployments based on branches linked to the run. Extend pipeline protection by configuring a protected branch check on each of your resources. This will automatically stop your pipeline from running on top of any user branches. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on 'Approvals and checks' tab. \n5. Add a new 'Branch control' check."
+              },
+              "shortDescription": {
+                "text": "DOS2152 - Project - Pipeline Protected Resources - Checks - Configure a protected branch check on each production service connection (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2152"
+            },
+            {
+              "id": "DOS2155",
+              "name": "AdoProjectPipelineChecksServiceconnectionProductionProtectWithChecks",
+              "fullDescription": {
+                "text": "Checks allow you to manage how this resource is used. Extend pipeline protection by configuring checks on your production resources. Most pipelines need a second set of eyes look over changes (especially to the pipeline itself) before deploying to production. Checks allow you to pause the pipeline run until certain conditions are met. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#checks https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on 'Approvals and checks' tab. \n5. Click on 'Add your first check' / 'View all checks' to add one or more checks. \n6. Click 'Create' to add the check."
+              },
+              "shortDescription": {
+                "text": "DOS2155 - Project - Pipeline Protected Resources - Checks - Protect your production service connection with approvals and checks (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2155"
+            },
+            {
+              "id": "DOS2195",
+              "name": "AdoProjectPipelineSettingsEnableShellTasksArgumentsValidation",
+              "fullDescription": {
+                "text": "Enable shell tasks args sanitizing. When this is enabled, argument parameters for built-in shell tasks are validated to prevent additional shell commands from being executed. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/inputs#shellTasksValidation"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Enable shell tasks arguments validation'."
+              },
+              "shortDescription": {
+                "text": "DOS2195 - Project - Pipeline Settings - Enable shell tasks arguments validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2195"
+            },
+            {
+              "id": "DOS2230",
+              "name": "AdoProjectPipelineSettingsLimitSettableVariablesAtQueueTime",
+              "fullDescription": {
+                "text": "Enforce settable variables. If enabled, only those variables that are explicitly marked as 'Settable at queue time' can be set at queue time. You can set any variables at queue time unless this option is enabled. With this option enabled, only those variables that are explicitly marked as 'Settable at queue time' can be set.  Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/inputs https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Limit variables that can be set at queue time'."
+              },
+              "shortDescription": {
+                "text": "DOS2230 - Project - Pipeline Settings - Limit variables that can be set at queue time (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2230"
+            },
+            {
+              "id": "DOS2280",
+              "name": "AdoProjectPipelinepermissionsAgentpoolDontGrantAllYamlPipelinesAccess",
+              "fullDescription": {
+                "text": "Agent Pool must not be granted access to all YAML pipelines. Lock down the agent pool and only allow selected YAML pipelines to access it. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources#pipeline-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-individual-agent-pool-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Agent pools link under Pipelines. \n3. Select an agent pool. \n4. Click on Security tab. \n5. Review Pipeline permissions and click on 'Restrict permission' to only allowed pipelines."
+              },
+              "shortDescription": {
+                "text": "DOS2280 - Project - Do not make the Agent Pool accessible to all YAML Pipelines (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2280"
+            },
+            {
+              "id": "DOS2290",
+              "name": "AdoProjectPipelinepermissionsEnvironmentDontGrantAllYamlPipelinesAccess",
+              "fullDescription": {
+                "text": "Environment must not be granted access to all YAML pipelines. Lock down the environment and only allow selected YAML pipelines to access it. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on the three dots button. \n4. Click Security. \n5. Under 'Pipeline permissions' section, click 'Restrict Permission' to avoid granting access to all YAML pipelines. Add the YAML pipelines that need explicit access on this environment."
+              },
+              "shortDescription": {
+                "text": "DOS2290 - Project - Do not make the Environment accessible to all YAML Pipelines (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2290"
+            },
+            {
+              "id": "DOS2300",
+              "name": "AdoProjectPipelinepermissionsSecurefileDontGrantAllYamlPipelinesAccess",
+              "fullDescription": {
+                "text": "Secure File must not be granted access to all YAML pipelines. Lock down the secure file and only allow selected YAML pipelines to access it. Information can be steal from the secure file if an unautorized user builds a YAML pipeline that can access the secure file. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. Select a secure file. \n3. Click on 'Pipeline permissions'. \n4. Click on 'Restrict permission'. \n5. Click + to add the YAML pipeline that needs permission to the secure file."
+              },
+              "shortDescription": {
+                "text": "DOS2300 - Project - Do not make the Secure File accessible to all YAML Pipelines (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2300"
+            },
+            {
+              "id": "DOS2310",
+              "name": "AdoProjectPipelinepermissionsServiceconnectionDontGrantAllYamlPipelinesAccess",
+              "fullDescription": {
+                "text": "Service connections must not be granted access to all YAML pipelines. Lock down the service connection and only allow selected YAML pipelines to consume the service connection. If any other YAML pipeline refers to the service connection, an authorization request gets raised, which must be approved by a connection Administrator. Learn more: https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#pipeline-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on the three dots button. \n5. Click Security. \n6. Under 'Pipeline permissions' section, click 'Restrict Permission' to avoid granting access to all YAML pipelines. Add the YAML pipelines that need explicit access on this service connection."
+              },
+              "shortDescription": {
+                "text": "DOS2310 - Project - Do not make the Service Connection accessible to all YAML Pipelines (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2310"
+            },
+            {
+              "id": "DOS2320",
+              "name": "AdoProjectPipelinepermissionsVariablegroupWithSecretsDontGrantAllYamlPipelinesAccess",
+              "fullDescription": {
+                "text": "Variable Group with secret variables must not be granted access to all YAML pipelines. Lock down the variable group and only allow selected YAML pipelines to access it. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. Select a variable group. \n3. Click on 'Pipeline permissions'. \n4. Click on 'Restrict permission'. \n5. Click + to add the YAML pipeline that needs permission to the variable group."
+              },
+              "shortDescription": {
+                "text": "DOS2320 - Project - Do not make the Variable Group with secret variables accessible to all YAML Pipelines (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2320"
+            },
+            {
+              "id": "DOS2327",
+              "name": "AdoProjectPipelinesLibraryVariablegroupLinkSecretsFromAkv",
+              "fullDescription": {
+                "text": "Link an existing Azure key vault to a variable group and map selective vault secrets to the variable group. When a variable group is not linked to a key vault, it is important to ensure that it does not contain any secrets. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault https://learn.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?tabs=classic https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?#tasks"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. Select a variable group. \n3. In the Variable groups page, enable Link secrets from an Azure key vault as variables."
+              },
+              "shortDescription": {
+                "text": "DOS2327 - Project - Pipelines - Variable group secrets should only be linked to a key vault (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2327"
+            },
+            {
+              "id": "DOS2340",
+              "name": "AdoProjectSecurityrolesAgentpoolRestrictCommonGroupAccess",
+              "fullDescription": {
+                "text": "The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-agent-pool-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Agent pools link under Pipelines. \n3. Select an agent pool. \n4. Click on Security tab. \n5. Under 'User permissions' section, review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2340 - Project - Security Roles - Restrict common group access permissions on agent pool (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2340"
+            },
+            {
+              "id": "DOS2350",
+              "name": "AdoProjectSecurityrolesAgentpoolRestrictInheritedCommonGroupAccess",
+              "fullDescription": {
+                "text": "Do not allow agent pools to inherit elavated permissions from project level user permissions. The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-agent-pool-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Agent pools link under Pipelines. \n3. On 'Agent pools' page, click on Security button (top right). \n4. On 'User permissions' panel, review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2350 - Project - Security Roles - Restrict inherited common group access permissions on agent pool (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2350"
+            },
+            {
+              "id": "DOS2360",
+              "name": "AdoProjectSecurityrolesEnvironmentRestrictCommonGroupAccess",
+              "fullDescription": {
+                "text": "The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-environment-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on the three dots button (top right). \n4. Click on Security. \n5. Under 'User permissions' section, review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2360 - Project - Security Roles - Restrict common group access permissions on environment (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2360"
+            },
+            {
+              "id": "DOS2370",
+              "name": "AdoProjectSecurityrolesEnvironmentRestrictInheritedCommonGroupAccess",
+              "fullDescription": {
+                "text": "Do not allow environments to inherit elavated permissions from project level user permissions. The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-environment-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. On 'Environments' page, click on the three dots button (top right). \n3. Click on Security. \n4. Under 'User permissions' section, review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2370 - Project - Security Roles - Restrict inherited common group access permissions on environment (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2370"
+            },
+            {
+              "id": "DOS2380",
+              "name": "AdoProjectSecurityrolesLibraryRestrictInheritedCommonGroupAccess",
+              "fullDescription": {
+                "text": "Do not allow variable groups and secure files to inherit elavated permissions from project level user permissions. The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-library-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. On 'Library' page, click on Security button. \n3. Review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2380 - Project - Security Roles - Restrict inherited common group access permissions on variable group and secure file (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2380"
+            },
+            {
+              "id": "DOS2390",
+              "name": "AdoProjectSecurityrolesSecurefileRestrictCommonGroupAccess",
+              "fullDescription": {
+                "text": "The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-library-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. On 'Library' page, click on 'Secure files' tab. \n3. Select a secure file from the list. \n4. Click on Security button. \n5. Review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2390 - Project - Security Roles - Restrict common group access permissions on secure file (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2390"
+            },
+            {
+              "id": "DOS2400",
+              "name": "AdoProjectSecurityrolesServiceconnectionRestrictCommonGroupAccess",
+              "fullDescription": {
+                "text": "The global groups (Administrators, Service Accounts, Contributors, Creators, Readers, Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-service-connection-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on the three dots button. \n5. Click Security. \n6. Under 'User permissions' section, review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2400 - Project - Security Roles - Restrict global group access permissions on service connection (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2400"
+            },
+            {
+              "id": "DOS2410",
+              "name": "AdoProjectSecurityrolesServiceconnectionRestrictInheritedCommonGroupAccess",
+              "fullDescription": {
+                "text": "Do not allow service connections to inherit elavated permissions from project level user permissions. The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-service-connection-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. On 'Service connections' page, click on the three dots button (top right). \n5. Click Security. \n6. Review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2410 - Project - Security Roles - Restrict inherited common group access permissions on service connection (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2410"
+            },
+            {
+              "id": "DOS2420",
+              "name": "AdoProjectSecurityrolesVariablegroupRestrictCommonGroupAccess",
+              "fullDescription": {
+                "text": "The groups (Contributors, Readers, Project Collection Valid Users, Project Valid Users) should not have elavated permissions (Admin/User). User permissions for certain groups must be restricted to read-only access. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scoped-permissions  https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions-lookup-guide https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources?#user-permissions https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/permissions#set-library-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. On 'Library' page, click on 'Variable groups' tab. \n3. Select a variable group from the list. \n4. Click on Security button. \n5. Review security roles and ensure common groups have only read-only access."
+              },
+              "shortDescription": {
+                "text": "DOS2420 - Project - Security Roles - Restrict common group access permissions on variable group (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2420"
+            },
+            {
+              "id": "DOS2430",
+              "name": "AdoProjectServiceconnectionAzureresourcemanagerUseWorkloadIdentityFederationAuthentication",
+              "fullDescription": {
+                "text": "Use workload identity federation for your Azure Resource Manager (ARM) service connections. Workload identity federation allows you to create secret-free service connections in Azure Pipelines to Azure. Convert your existing Azure Resource Manager service connections which use secrets to authenticate to leverage Workload identity federation instead, for improved security and simplified maintenance. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scope-service-connections https://learn.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure?#create-an-azure-resource-manager-service-connection-using-workload-identity-federation https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints https://devblogs.microsoft.com/premier-developer/azure-devops-workload-identity-federation/"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection of type 'Azure Resource Manager'. \n4. Click on Convert button to 'Convert your service connections to workload identity federation for improved security and simplified maintenance.'. \n5. Accept the changes by clicking Convert."
+              },
+              "shortDescription": {
+                "text": "DOS2430 - Project - Azure service connection should use Workload Identity federation with OpenID Connect for authentication (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2430"
+            },
+            {
+              "id": "DOS2440",
+              "name": "AdoProjectServiceconnectionDontShareServiceconnectionsAcrossProjects",
+              "fullDescription": {
+                "text": "You should not share a service connection across multiple projects. Limit the access to the service connection to your current project to avoid unwanted data access from another project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints#project-permissions---cross-project-sharing-of-service-connections https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on the three dots button. \n5. Click Security. \n6. Under 'Project permissions' section, make sure 'Only current project' has access and remove other projects that no more require access to the service connection."
+              },
+              "shortDescription": {
+                "text": "DOS2440 - Project - Do not share the Service Connection across multiple projects (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2440"
+            },
+            {
+              "id": "DOS2450",
+              "name": "AdoProjectServiceconnectionDontUseAzureclassicConnections",
+              "fullDescription": {
+                "text": "You should use the Azure Resource Manager service connection scoped to a resource group in your subscription. Delete the Azure Classic service connection and create a new ARM service connection to replace it.  Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scope-service-connections https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select the Azure Classic service connection. \n4. Click on the three dots button (top right). \n5. Click on Delete. \n6. Create a new service connection of type 'Azure Resource Manager'."
+              },
+              "shortDescription": {
+                "text": "DOS2450 - Project - Do not use Azure Classic service connections to access an Azure subscription (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2450"
+            },
+            {
+              "id": "DOS2460",
+              "name": "AdoProjectServiceconnectionLimitScopelevelToUseLeastPrivilegeAccess",
+              "fullDescription": {
+                "text": "Azure Resource Manager service connection should restrict scope level access only to specific resource or resource group as needed. It is important to not provide subscription or management group access for the 'automatic' service principal. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#scope-service-connections https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection of type 'Azure Resource Manager'. \n4. Click on Edit. \n5. Reduce the scope to the appropiate resource group. \n6. Save the changes."
+              },
+              "shortDescription": {
+                "text": "DOS2460 - Project - Azure service connection should not be granted access to subscription or management group (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2460"
+            },
+            {
+              "id": "DOS2470",
+              "name": "AdoProjectServiceconnectionReviewInactiveServiceconnections",
+              "fullDescription": {
+                "text": "Review inactive service connections and remove them if not required anymore. Inactive services connections must be removed to reduce the attack surface for a malicious user.  Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints https://learn.microsoft.com/en-us/azure/devops/pipelines/security/resources"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on the Usage history tab and review last run date. \n5. Click on the three dots button (top right). \n6. Click on Delete."
+              },
+              "shortDescription": {
+                "text": "DOS2470 - Project - Inactive service connection should be reviewed and must be removed if not used (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2470"
+            },
+            {
+              "id": "DOS2070",
+              "name": "AdoProjectAllrepositoriesRepopolicyCaseEnforcement",
+              "fullDescription": {
+                "text": "Enable the 'Case enforcement' repository policy setting, so that you block contributors from introducing case-only differences. Avoid case-sensitivity conflicts by blocking pushes that change name casing on files, folders, branches, and tags. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#case-enforcement-policy https://learn.microsoft.com/en-us/azure/devops/repos/git/os-compatibility  https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Repository Policies' section, turn 'On' the policy 'Case enforcement'."
+              },
+              "shortDescription": {
+                "text": "DOS2070 - Project - All Repositories - Repository Policies - Case enforcement (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2070"
+            },
+            {
+              "id": "DOS2090",
+              "name": "AdoProjectAllrepositoriesRepopolicyMaximumFileSize",
+              "fullDescription": {
+                "text": "Enable the 'Maximum file size' repository policy setting, so that you block files over a certain size from entering the repository. This policy will reject pushes to a repository for files which exceed the specified size. Block pushes that contain new or updated files larger than this limit. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#maximum-file-size-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Repository Policies' section, turn 'On' the policy 'Maximum file size' and select the (10 MB) value from the drop down list."
+              },
+              "shortDescription": {
+                "text": "DOS2090 - Project - All Repositories - Repository Policies - Maximum file size (10 MB) (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2090"
+            },
+            {
+              "id": "DOS2100",
+              "name": "AdoProjectAllrepositoriesRepopolicyMaximumPathLength",
+              "fullDescription": {
+                "text": "Enable the 'Maximum path length' repository policy setting, so that you block pushes that contain files or directories with path lengths that are invalid on any platform. This policy will reject pushes to a repository for paths which exceed the specified length. Block pushes that introduce paths that exceed the specified length. The default maximum value is 248, because that maximum length is 100% supported across all three major platforms. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#maximum-path-length-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Repository Policies' section, turn 'On' the policy 'Maximum path length' and configure the length to be 248 chars supported across all three major platforms."
+              },
+              "shortDescription": {
+                "text": "DOS2100 - Project - All Repositories - Repository Policies - Maximum path length (248) (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2100"
+            },
+            {
+              "id": "DOS2110",
+              "name": "AdoProjectAllrepositoriesRepopolicyReservedNames",
+              "fullDescription": {
+                "text": "Enable the 'Reserved names' repository policy setting, so that you block pushes to a repository that contain file or folder names that are invalid on all platforms. This policy will reject pushes to a repository for names which aren't valid on all supported client OSes. Block pushes that introduce files, folders, or branch names that include platform reserved names or incompatible characters. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#reserved-names-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Under 'All Repositories' page, click on Policies tab. \n4. Under 'Repository Policies' section, turn 'On' the policy 'Reserved names'."
+              },
+              "shortDescription": {
+                "text": "DOS2110 - Project - All Repositories - Repository Policies - Reserved names (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2110"
+            },
+            {
+              "id": "DOS2130",
+              "name": "AdoProjectLimitMinMaxAdmins",
+              "fullDescription": {
+                "text": "Your project should have at least 2 and at most 5 Project Administrators. To reduce the risk of losing admin access, you may want to ensure at least 2 users are part of the Project Administrators group. Limit the number of administrators to no more than 5 for your project. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/look-up-project-administrators"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Project Settings. \n2. Click on General -> Permissions. \n3. Groups - Select ' Project Administrators'. \n4. Review all members of this group."
+              },
+              "shortDescription": {
+                "text": "DOS2130 - Project - A project must have at least 2 and no more than 5 administrators (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2130"
+            },
+            {
+              "id": "DOS2170",
+              "name": "AdoProjectPipelineSettingsDisableCreationOfClassicBuildPipelines",
+              "fullDescription": {
+                "text": "Enable the setting 'Disable creation of classic build pipelines'. When this is enabled, no classic build pipelines can be created / imported. Existing ones will continue to work. Learn more: https://devblogs.microsoft.com/devops/disable-creation-of-classic-pipelines"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Disable creation of classic build pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS2170 - Project - Pipeline Settings - Disable creation of classic build pipelines (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2170"
+            },
+            {
+              "id": "DOS2180",
+              "name": "AdoProjectPipelineSettingsDisableCreationOfClassicReleasePipelines",
+              "fullDescription": {
+                "text": "Enable the setting 'Disable creation of classic release pipelines'. When this is enabled, no classic release pipelines, task groups, and deployment groups can be created / imported. Existing ones will continue to work. Learn more: https://devblogs.microsoft.com/devops/disable-creation-of-classic-pipelines"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Disable creation of classic release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS2180 - Project - Pipeline Settings - Disable creation of classic release pipelines (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2180"
+            },
+            {
+              "id": "DOS2160",
+              "name": "AdoProjectPipelineSettingsDisableAnonymousAccessToBadges",
+              "fullDescription": {
+                "text": "Status badges are private. Anonymous users can access the status badge API for all pipelines unless this option is enabled. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?#add-a-status-badge-to-your-repository"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Disable anonymous access to badges'."
+              },
+              "shortDescription": {
+                "text": "DOS2160 - Project - Pipeline Settings - Disable anonymous access to badges (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2160"
+            },
+            {
+              "id": "DOS2190",
+              "name": "AdoProjectPipelineSettingsDisableImpliedYamlCiTrigger",
+              "fullDescription": {
+                "text": "Prevent unintended pipeline runs. Enable the setting 'Disable implied YAML CI trigger'. Trigger a pipeline only for code changes that match its trigger section. Do not trigger the pipeline if the trigger section is missing. Learn more: https://learn.microsoft.com/en-us/azure/devops/release-notes/2023/sprint-227-update#prevent-unintended-pipeline-runs https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/trigger"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Disable implied YAML CI trigger'."
+              },
+              "shortDescription": {
+                "text": "DOS2190 - Project - Pipeline Settings - Disable implied YAML CI trigger to prevent unintended pipeline runs (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2190"
+            },
+            {
+              "id": "DOS2240",
+              "name": "AdoProjectPipelineSettingsRetentionPolicyArtifacts",
+              "fullDescription": {
+                "text": "Retention policy - Days to keep artifacts, symbols and attachments (>= 30). Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/retention"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Set the number of days to keep artifacts, symbols, and attachments."
+              },
+              "shortDescription": {
+                "text": "DOS2240 - Project - Pipeline Retention Policy - Days to keep Artifacts (>= 30) (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2240"
+            },
+            {
+              "id": "DOS2250",
+              "name": "AdoProjectPipelineSettingsRetentionPolicyPrRuns",
+              "fullDescription": {
+                "text": "Retention policy - Days to keep pull request runs (>= 10). Runs represent one execution of a pipeline. During a run, the pipeline is processed, and agents process one or more jobs. A pipeline run includes jobs, steps, and tasks. Runs power both continuous integration (CI) and continuous delivery (CD) pipelines. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/retention"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Set the number of days to keep pull request runs."
+              },
+              "shortDescription": {
+                "text": "DOS2250 - Project - Pipeline Retention Policy - Days to keep Pull Request Runs (>= 10) (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2250"
+            },
+            {
+              "id": "DOS2260",
+              "name": "AdoProjectPipelineSettingsRetentionPolicyRecentRunsToRetainPerPipeline",
+              "fullDescription": {
+                "text": "Retention policy - Number of recent runs to retain per pipeline (>= 3). This many runs will also be retained per protected branch and default pipeline branch. (Azure Repos only). Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/retention"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Set the number of recent runs to keep for each pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS2260 - Project - Pipeline Retention Policy - Number of recent runs to retain per pipeline (>= 3) (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2260"
+            },
+            {
+              "id": "DOS2270",
+              "name": "AdoProjectPipelineSettingsRetentionPolicyRuns",
+              "fullDescription": {
+                "text": "Retention policy - Days to keep runs (>= 30). Runs represent one execution of a pipeline. During a run, the pipeline is processed, and agents process one or more jobs. A pipeline run includes jobs, steps, and tasks. Runs power both continuous integration (CI) and continuous delivery (CD) pipelines. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/policies/retention"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Set the number of days to keep runs."
+              },
+              "shortDescription": {
+                "text": "DOS2270 - Project - Pipeline Retention Policy - Days to keep Runs (>= 30) (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2270"
+            },
+            {
+              "id": "DOS2325",
+              "name": "AdoProjectPipelinesLibraryEnvironmentShouldHaveDescription",
+              "fullDescription": {
+                "text": "Make sure to add a description to your pipeline environment. Include a description in your pipeline environment for clarity and purpose. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Environments \n2. Select an environment. \n3. Click on the three dots button (top right). \n4. Click Edit. \n5. Enter a Description. \n6. Click on 'Save'."
+              },
+              "shortDescription": {
+                "text": "DOS2325 - Project - Pipelines - Environment should have a description (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2325"
+            },
+            {
+              "id": "DOS2326",
+              "name": "AdoProjectPipelinesLibraryVariablegroupShouldHaveDescription",
+              "fullDescription": {
+                "text": "Make sure to add a description to your pipeline variable group. This description will help define its purpose and provide clarity to users about the role of the variable group. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?tabs=classic"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines -> Library \n2. Select a variable group. \n3. Enter a Description. \n4. Click on 'Save'."
+              },
+              "shortDescription": {
+                "text": "DOS2326 - Project - Pipelines - Variable group should have a description (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2326"
+            },
+            {
+              "id": "DOS2335",
+              "name": "AdoProjectShouldHaveDescription",
+              "fullDescription": {
+                "text": "Include a project description for clarity and purpose. Describe your project and make it easier for other people to understand it. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/projects/create-project"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Select General -> Overview. \n3. Enter a Description. \n4. Click on 'Save'."
+              },
+              "shortDescription": {
+                "text": "DOS2335 - Project - Project should have a description (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2335"
+            },
+            {
+              "id": "DOS2336",
+              "name": "AdoProjectTeamShouldHaveDescription",
+              "fullDescription": {
+                "text": "Include a description to your project team for clarity and purpose. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/settings/add-teams"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Select General -> Teams. \n3. Select a team. \n4. Click on Settings tab. \n5. Under 'Team Details' section, enter a Description. \n6. Click on 'Save'."
+              },
+              "shortDescription": {
+                "text": "DOS2336 - Project - Project Team should have a description (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2336"
+            },
+            {
+              "id": "DOS2475",
+              "name": "AdoProjectServiceconnectionShouldHaveDescription",
+              "fullDescription": {
+                "text": "Make sure to provide a description for your pipeline service connection. Adding a description will help users understand its purpose and when to use it. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Service connections link under Pipelines. \n3. Select a service connection. \n4. Click on Edit button. \n5. Enter a Description. \n6. Click on 'Save'."
+              },
+              "shortDescription": {
+                "text": "DOS2475 - Project - Pipelines - Service connection should have a description (Low)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS2475"
+            },
+            {
+              "id": "DOS3160",
+              "name": "AdoProjectRepositorySecuritypermissionsDontAllowBypassPolicies",
+              "fullDescription": {
+                "text": "Protect important branches in this repository. This policy will ensure that no user has permissions to bypass policies. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#secure-azure-repos https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-permissions"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Security tab. \n5. On the page 'User permissions', ensure the 'Bypass policies when completing pull requests' and 'Bypass policies when pushing' user permisions are 'Not set' or 'Deny'. \n6. Under the section 'Git refs permissions', select 'All Branches'. \n7. For all important branches of this repository, ensure the branch security does not set or allow any bypass policies."
+              },
+              "shortDescription": {
+                "text": "DOS3160 - Repository - Branch Policies - Security Permissions - Do not allow bypassing policies (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3160"
+            },
+            {
+              "id": "DOS3410",
+              "name": "AdoProjectRepositoryPipelineJobauthorizationscopeProject",
+              "fullDescription": {
+                "text": "Secure access to repos from pipelines. Limit job authorization scope to current project for your pipeline. You can set the job authorization scope to be collection or project. Important: If the scope is not restricted at either the organization level or project level, then every job in your YAML pipeline gets a collection scoped job access token. In other words, your pipeline has access to any repository in any project of your organization. If an adversary is able to gain access to a single pipeline in a single project, they will be able to gain access to any repository in your organization. This is why, it is recommended that you restrict the scope at the highest level (organization settings) in order to contain the attack to a single project. Learn more: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/access-tokens#job-authorization-scope https://learn.microsoft.com/en-us/azure/devops/pipelines/security/secure-access-to-repos"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Settings link under Pipelines. \n3. Turn 'On' the setting 'Limit job authorization scope to current project for non-release pipelines'."
+              },
+              "shortDescription": {
+                "text": "DOS3410 - Repository - Pipeline - Enforce job authorization scope to only current project (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3410"
+            },
+            {
+              "id": "DOS1320",
+              "name": "AdoProjectRepositoryAdvancedsecurityEnableForRepo",
+              "fullDescription": {
+                "text": "Enable Advanced Security for your repository. A shield icon appears in the repository view for any repository with Advanced Security enabled. You can enable Advanced Security at the organization, project, or repository level. To access each of the scanning tools and results, you need to first enable Advanced Security. Advanced Security is billed based on the number of unique active committers across all enabled repositories in your subscription. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/configure-github-advanced-security-features"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Project Settings. \n2. Select Repos -> Repositories. \n3. Select the repository you want to enable Advanced Security for. \n4. Turn 'On' the setting 'Advanced Security'."
+              },
+              "shortDescription": {
+                "text": "DOS1320 - Repository - Enable Advanced Security (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1320"
+            },
+            {
+              "id": "DOS1330",
+              "name": "AdoProjectRepositoryAdvancedsecurityEnableSecretScanningPushProtection",
+              "fullDescription": {
+                "text": "Block secrets on push. Enable secret push protection for your repository. Scan all pushes to the repository and block pushes containing secrets. Secret scanning push protection and repository scanning are automatically enabled when you turn on Advanced Security. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/configure-github-advanced-security-features"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Go to Project Settings. \n2. Select Repos -> Repositories. \n3. Select the repository you want to enable Advanced Security for. \n4. Ensure the setting 'Advanced Security' is 'On'. \n5. Enable the check 'Block secrets on push'."
+              },
+              "shortDescription": {
+                "text": "DOS1330 - Repository - Enable Advanced Security - Secret Scanning - Block secrets on push (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS1330"
+            },
+            {
+              "id": "DOS3010",
+              "name": "AdoProjectRepositoryBranchpoliciesProtectImportantBranchesWithRequiredPolicies",
+              "fullDescription": {
+                "text": "Enable required branch policies, so that branches cannot be deleted and changes must be made via a pull request. This policy will ensure that best practice policies are required on each repository: Require a minimum number of reviewers, Check for linked work items, Check for comment resolution, Limit merge types, Build Validation policies, Status Check policies, and Automatically included reviewers. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies-overview https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, ensure the important branches have the icon 'Branch has policies' assigned. \n6. Click on a branch from the list. \n7. Ensure the required policies are turned on and configured to match your standards."
+              },
+              "shortDescription": {
+                "text": "DOS3010 - Repository - Branch Policies - Protect important branches with required policies (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3010"
+            },
+            {
+              "id": "DOS3020",
+              "name": "AdoProjectRepositoryBranchpolicyAutomaticallyIncludeCodeReviewers",
+              "fullDescription": {
+                "text": "Enable the 'Automatically included reviewers' branch policy, so that you can automatically add reviewers to pull requests that change files in specific directories and files, or to all pull requests in a repo. This policy will ensure that required reviewers are added for modified files matching specified patterns. Designate code reviewers to automatically include when pull requests change certain areas of code. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#automatically-include-code-reviewers https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Automatically included reviewers' section, click on '+' button to add a new reviewer policy. \n7. Ensure at least one policy is enabled."
+              },
+              "shortDescription": {
+                "text": "DOS3020 - Repository - Branch Policies - Automatically include code reviewers (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3020"
+            },
+            {
+              "id": "DOS3030",
+              "name": "AdoProjectRepositoryBranchpolicyCheckForCommentResolution",
+              "fullDescription": {
+                "text": "Enable the 'Check for comment resolution' branch policy, so that you require all PR comments to be resolved when pull requests are completed. This policy checks to see that all comments have been resolved on pull requests. Block pull requests from being completed while any comments are active. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#check-for-comment-resolution https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Branch Policies' section, turn 'On' the policy 'Check for comment resolution'. \n7. Configure the policy to be 'Required'."
+              },
+              "shortDescription": {
+                "text": "DOS3030 - Repository - Branch Policies - Check for comment resolution (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3030"
+            },
+            {
+              "id": "DOS3040",
+              "name": "AdoProjectRepositoryBranchpolicyCheckForLinkedWorkItems",
+              "fullDescription": {
+                "text": "Enable the 'Check for linked work items' branch policy, so that you require associations between PRs and work items when pull requests are completed. This policy will ensure work item management tracking by requiring associations between PRs and work items. Block pull requests from being completed unless they have at least one linked work item. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#check-for-linked-work-items https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Branch Policies' section, turn 'On' the policy 'Check for linked work items'. \n7. Configure the policy to be 'Required'."
+              },
+              "shortDescription": {
+                "text": "DOS3040 - Repository - Branch Policies - Check for linked work items (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3040"
+            },
+            {
+              "id": "DOS3050",
+              "name": "AdoProjectRepositoryBranchpolicyLimitMergeTypes",
+              "fullDescription": {
+                "text": "Enable the 'Limit merge types' branch policy, so that you control the branch history by limiting the available types of merge when pull requests are completed. This policy will ensure consistent branch history by enforcing a merge strategy for pull request completion. Defaults to 'Basic merge (no fast-forward)' - Preserves history exactly as it happened during development. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#limit-merge-types https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Branch Policies' section, turn 'On' the policy 'Limit merge types'. \n7. Configure the policy to match your standards and update the policy definition."
+              },
+              "shortDescription": {
+                "text": "DOS3050 - Repository - Branch Policies - Limit merge types (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3050"
+            },
+            {
+              "id": "DOS3060",
+              "name": "AdoProjectRepositoryBranchpolicyRequireBuildValidation",
+              "fullDescription": {
+                "text": "Enable the 'Build Validation' branch policy, so that you require pull request changes to build successfully before the PR can complete. The build policy evaluates the build results to determine whether the PR can be completed. Build must succeed in order to complete pull requests. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#build-validation https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Build Validation' section, click on '+' button to add a new build policy. \n7. Ensure at least one policy is enabled."
+              },
+              "shortDescription": {
+                "text": "DOS3060 - Repository - Branch Policies - Require Build Validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3060"
+            },
+            {
+              "id": "DOS3070",
+              "name": "AdoProjectRepositoryBranchpolicyRequireMinReviewers",
+              "fullDescription": {
+                "text": "Enable the 'Require a minimum number of reviewers' branch policy, so that every pull request gets reviewed by at least two approvers. This policy will ensure that a minimum number of reviewers have approved a pull request before completion. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices?view=azure-devops#repositories-and-branches https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies#require_reviewers https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Branch Policies' section, click on a branch from the list. \n6. With the branch selected, under 'Branch Policies' section, turn 'On' the policy 'Require a minimum number of reviewers'. \n7. Configure the policy to match your standards and the current policy definition: Minimum number of reviewers: 2, Prohibit the most recent pusher from approving their own changes: ON, When new changes are pushed: ON (Require at least one approval on the last iteration)."
+              },
+              "shortDescription": {
+                "text": "DOS3070 - Repository - Branch Policies - Require a minimum number of reviewers (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3070"
+            },
+            {
+              "id": "DOS3090",
+              "name": "AdoProjectRepositoryRepopoliciesProtectRepositoryWithRequiredPolicies",
+              "fullDescription": {
+                "text": "Enable required repository policies, so that you enfore default settings and options. This policy will ensure that best practice policies are required on each repository: Commit author email validation, Reserved names, Maximum path length, Maximum file size, and Git repository settings. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#repository-policies-or-options https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, ensure the required policies are turned on."
+              },
+              "shortDescription": {
+                "text": "DOS3090 - Repository - Repository Policies - Protect repository with required policies (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3090"
+            },
+            {
+              "id": "DOS3110",
+              "name": "AdoProjectRepositoryRepopolicyCommitAuthorEmailValidation",
+              "fullDescription": {
+                "text": "Enable the 'Commit author email validation' branch policy, so that you block commits to a repository by commit authors whose email addresses don't match a pattern. This policy will block pushes from including commits where the author email does not match the specified patterns. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#commit-author-email-validation-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, turn 'On' the policy 'Commit author email validation' and configure the author email patterns."
+              },
+              "shortDescription": {
+                "text": "DOS3110 - Repository - Repository Policies - Commit author email validation (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3110"
+            },
+            {
+              "id": "DOS3120",
+              "name": "AdoProjectRepositoryRepopolicyDisableForks",
+              "fullDescription": {
+                "text": "Disable the 'Forks' repository policy setting, so that you block users to create forks from this repository. The more forks there are, the harder it is to keep track of each fork's security. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings#enable-forks"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Settings tab. \n5. Under 'Repository Settings' section, turn 'Off' the setting 'Forks'."
+              },
+              "shortDescription": {
+                "text": "DOS3120 - Repository - Repository Policies - Disable Forks (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3120"
+            },
+            {
+              "id": "DOS3170",
+              "name": "AdoProjectRepositorySettingsDisableForking",
+              "fullDescription": {
+                "text": "Disable repository forking. The more forks there are, the harder it is to keep track of each fork's security. Learn more: https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings#enable-forks"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Settings tab. \n5. Under 'Repository Settings' section, turn 'Off' the setting 'Forks'."
+              },
+              "shortDescription": {
+                "text": "DOS3170 - Repository - Disable Forking (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3170"
+            },
+            {
+              "id": "DOS3080",
+              "name": "AdoProjectRepositoryDefaultbranchMain",
+              "fullDescription": {
+                "text": "The default branch name for all repositories should be 'main'. This policy will ensure naming convention is consistent across each repository. You can change the default branch for a particular repository at any time. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings#default-branch-name https://learn.microsoft.com/en-us/azure/devops/repos/git/change-default-branch"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Click on Settings tab. \n4. Under 'All Repositories Settings' section, ensure the setting 'Default branch name for new repositories' is 'main'. \n5. Navigate to Project -> Repos -> Branches \n6. Select a repository from top drop down list. \n7. Ensure the 'Default' and 'Compare' labels are for the 'main' branch."
+              },
+              "shortDescription": {
+                "text": "DOS3080 - Repository - Default branch name should be main (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3080"
+            },
+            {
+              "id": "DOS3100",
+              "name": "AdoProjectRepositoryRepopolicyCaseEnforcement",
+              "fullDescription": {
+                "text": "Enable the 'Case enforcement' repository policy setting, so that you block contributors from introducing case-only differences. Avoid case-sensitivity conflicts by blocking pushes that change name casing on files, folders, branches, and tags. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#case-enforcement-policy https://learn.microsoft.com/en-us/azure/devops/repos/git/os-compatibility https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, turn 'On' the policy 'Case enforcement'."
+              },
+              "shortDescription": {
+                "text": "DOS3100 - Repository - Repository Policies - Case enforcement (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3100"
+            },
+            {
+              "id": "DOS3130",
+              "name": "AdoProjectRepositoryRepopolicyMaximumFileSize",
+              "fullDescription": {
+                "text": "Enable the 'Maximum file size' repository policy setting, so that you block files over a certain size from entering the repository. This policy will reject pushes to a repository for files which exceed the specified size. Block pushes that contain new or updated files larger than this limit. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#maximum-file-size-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, turn 'On' the policy 'Maximum file size' and select the (10 MB) value from the drop down list."
+              },
+              "shortDescription": {
+                "text": "DOS3130 - Repository - Repository Policies - Maximum file size (10 MB) (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3130"
+            },
+            {
+              "id": "DOS3140",
+              "name": "AdoProjectRepositoryRepopolicyMaximumPathLength",
+              "fullDescription": {
+                "text": "Enable the 'Maximum path length' repository policy setting, so that you block pushes that contain files or directories with path lengths that are invalid on any platform. This policy will reject pushes to a repository for paths which exceed the specified length. Block pushes that introduce paths that exceed the specified length. The default maximum value is 248, because that maximum length is 100% supported across all three major platforms. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#maximum-path-length-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, turn 'On' the policy 'Maximum path length' and configure the length to be 248 chars supported across all three major platforms."
+              },
+              "shortDescription": {
+                "text": "DOS3140 - Repository - Repository Policies - Maximum path length (248) (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3140"
+            },
+            {
+              "id": "DOS3150",
+              "name": "AdoProjectRepositoryRepopolicyReservedNames",
+              "fullDescription": {
+                "text": "Enable the 'Reserved names' repository policy setting, so that you block pushes to a repository that contain file or folder names that are invalid on all platforms. This policy will reject pushes to a repository for names which aren't valid on all supported client OSes. Block pushes that introduce files, folders, or branch names that include platform reserved names or incompatible characters. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?#reserved-names-policy https://learn.microsoft.com/en-us/azure/devops/organizations/security/security-best-practices#repositories-and-branches"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project Settings. \n2. Open the Repositories link under Repos. \n3. Select a repository from the list. \n4. Click on Policies tab. \n5. Under 'Repository Policies' section, turn 'On' the policy 'Reserved names'."
+              },
+              "shortDescription": {
+                "text": "DOS3150 - Repository - Repository Policies - Reserved names (Medium)"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3150"
+            },
+            {
+              "id": "DOS3510",
+              "name": "AdoRepositoryDevsecopsControlSsSecretScanning",
+              "fullDescription": {
+                "text": "Make sure that Secret Scanning (SS) is in place for your repository. Exposed credentials provide easily exploitable opportunities for attackers. To defend against this threat, secret scanning tools scan for credentials in your source code. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/github-advanced-security-secret-scanning https://github.com/gitleaks/gitleaks  https://appsecmap.com https://owasp.org/www-project-devsecops-guideline/latest/01a-Secrets-Management"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI Pipeline. \n3. Ensure a secret scanning tool is present in your pipeline. \n4.Or alternatively, you can enable 'Advanced Security' for your repository."
+              },
+              "shortDescription": {
+                "text": "DOS3510 - AppSec - ADO DevSecOps Control - Ensure Secret Scanning (SS) (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3510"
+            },
+            {
+              "id": "DOS3520",
+              "name": "AdoRepositoryDevsecopsControlScaSoftwareCompositionAnalysis",
+              "fullDescription": {
+                "text": "Make sure that Software Composition Analysis (SCA) / Dependency Scanning is in place for your repository. Scan your application for any vulnerabilities in open source components used in your source code. Dependency scanning detects the open source components used in your source code and detects if there are any associated vulnerabilities. Any found vulnerabilities from open source components get flagged as an alert. Dependency scanning generates an alert for any open-source component, direct or transitive, found to be vulnerable that your code depends upon. Direct vulnerabilities are the libraries your code directly uses. Transitive dependencies are the libraries or other software that direct dependencies use. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/github-advanced-security-dependency-scanning https://appsecmap.com https://www.gartner.com/reviews/market/software-composition-analysis-sca"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI Pipeline. \n3. Ensure a SCA / Dependency scanning tool for dependencies is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3520 - AppSec - ADO DevSecOps Control - Ensure Software Composition Analysis (SCA) / Dependency Scanning (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3520"
+            },
+            {
+              "id": "DOS3530",
+              "name": "AdoRepositoryDevsecopsControlSastStaticApplicationSecurityTesting",
+              "fullDescription": {
+                "text": "Make sure that Static Application Security Testing (SAST) / Code Scanning is in place for your repository. Code scanning lets you analyze the code to find security vulnerabilities and coding errors. SAST tools play a crucial role in identifying security vulnerabilities within source code. These tools analyze code for potential flaws based on predefined security rules and policies. Before their code is compiled, DevSecOps developers begin testing their custom code for security vulnerabilities. This helps them fix issues without affecting the build. SAST tools make this process easier with automatic checks and real-time feedback. Learn more: https://learn.microsoft.com/en-us/azure/devops/repos/security/github-advanced-security-code-scanning https://appsecmap.com https://owasp.org/www-community/Source_Code_Analysis_Tools https://www.microsoft.com/en-us/security/business/security-101/what-is-devsecops"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI Pipeline. \n3. Ensure a SAST / Code scanning tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3530 - AppSec - ADO DevSecOps Control - Ensure Static Application Security Testing (SAST) / Code Scanning (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3530"
+            },
+            {
+              "id": "DOS3540",
+              "name": "AdoRepositoryDevsecopsControlCisContainerImageScanning",
+              "fullDescription": {
+                "text": "Make sure that Container Image Scanning (CIS) / Image Scanning is in place for your repository. Container image scanning is a crucial aspect of DevSecOps, especially as containers become more prevalent in application deployment. Container scanning is the process and scanning tools used to identify vulnerabilities within containers and their components. It is key to container security, and enables developers and cybersecurity teams to fix security threats in containerized applications before deployment. Container scanning tools, scan containers and compare them against public or proprietary vulnerability databases to uncover potential security issues. Learn more: https://owasp.org/www-project-devsecops-guideline/latest/02f-Container-Vulnerability-Scanning https://www.practical-devsecops.com/top-container-security-tools/ https://www.aquasec.com/cloud-native-academy/container-security/image-scanning/ https://snyk.io/learn/container-security/container-scanning"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI Pipeline. \n3. Ensure a Container Image Scanning (CIS) tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3540 - AppSec - ADO DevSecOps Control - Ensure Container Image Scanning (CIS) / Container Scanning (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3540"
+            },
+            {
+              "id": "DOS3550",
+              "name": "AdoRepositoryDevsecopsControlIacsIacScanning",
+              "fullDescription": {
+                "text": "Make sure that Infrastructure as Code (IaC) Scanning (IACS) is in place for your repository. Infrastructure as code (IaC) scanning is the process of analyzing and evaluating the security and compliance of infrastructure code. To reduce the risk that misconfigurations are deployed to the production environment, IaC scanning tools automatically check the infrastructure at the code level for noncompliance with security policies and standards. Learn more: https://appsecmap.com  https://learn.microsoft.com/en-us/azure/defender-for-cloud/iac-vulnerabilities https://owasp.org/www-project-devsecops-guideline/latest/ https://www.aquasec.com/cloud-native-academy/devsecops/infrastructure-as-code-iac/ https://www.microsoft.com/en-us/security/business/security-101/what-is-devsecops https://github.com/aquasecurity/tfsec https://github.com/tenable/terrascan https://github.com/bridgecrewio/checkov"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI Pipeline. \n3. Ensure a IAC Scanning tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3550 - AppSec - ADO DevSecOps Control - Ensure Infrastructure as Code Scanning (IACS) (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3550"
+            },
+            {
+              "id": "DOS3560",
+              "name": "AdoRepositoryDevsecopsControlIsInfrastructureScanning",
+              "fullDescription": {
+                "text": "Make sure that Infrastructure Scanning (IS) is in place for your repository. DevOps does a great job in automating the development and deployment process, but since all moving parts (containers, libraries etc.) are being updated frequently, it is imperative to make sure the infrastructure where you deploy your code is safe. The best way to do that is to incorporate vulnerability scanning into your pipeline. A vulnerability scanner is a computer program designed to assess computers, networks or applications for known weaknesses. These scanners are used to discover the weaknesses of a given system. They are utilized in the identification and detection of vulnerabilities arising from mis-configurations or flawed programming within a network-based asset such as a firewall, router, web server, application server, etc. Learn more: https://owasp.org/www-project-devsecops-guideline/latest/02e-Infrastructure-Vulnerability-Scanning https://www.gartner.com/reviews/market/vulnerability-assessment"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CI/CD Pipeline. \n3. Ensure an Infrastructure Scanning tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3560 - AppSec - ADO DevSecOps Control - Ensure Infrastructure Scanning (IS) (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3560"
+            },
+            {
+              "id": "DOS3570",
+              "name": "AdoRepositoryDevsecopsControlDastDynamicApplicationSecurityTesting",
+              "fullDescription": {
+                "text": "Make sure that Dynamic Application Security Testing (DAST) is in place for your repository. Dynamic application security testing emulates the methods a bad actor might use to attack an application. This testing occurs while the application is running and is based on predefined use cases. Web Application Vulnerability Scanners are automated tools that scan web applications, normally from the outside, to look for security vulnerabilities such as Cross-site scripting, SQL Injection, Command Injection, Path Traversal and insecure server configuration. DAST is a black-box testing method that scans applications in runtime. DAST is a good method for preventing regressions and does not depend on a specific programming language. Learn more: https://owasp.org/www-community/Vulnerability_Scanning_Tools https://owasp.org/www-community/Free_for_Open_Source_Application_Security_Tools https://appsecmap.com https://snyk.io/learn/application-security/dast-dynamic-application-security-testing/"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CD Pipeline. \n3. Ensure a DAST scanning tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3570 - AppSec - ADO DevSecOps Control - Ensure Dynamic Application Security Testing (DAST) (Critical)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3570"
+            },
+            {
+              "id": "DOS3580",
+              "name": "AdoRepositoryDevsecopsControlIastInteractiveApplicationSecurityTesting",
+              "fullDescription": {
+                "text": "Make sure that Interactive Application Security Testing (IAST) is in place for your repository. During quality assurance testing or when an application is being used, interactive application security tools scan the code to find vulnerabilities and provide reports that identify where in the code the issue is. IAST tools are typically geared to analyze Web Applications and Web APIs, but that is vendor specific. There may be IAST products that can perform good security analysis on non-web applications as well. IAST works best when deployed in a QA environment with automated functional tests running. Learn more: https://owasp.org/www-community/Free_for_Open_Source_Application_Security_Tools https://appsecmap.com https://snyk.io/learn/application-security/iast-interactive-application-security-testing/ https://www.veracode.com/security/interactive-application-security-testing-iast https://owasp.org/www-project-devsecops-guideline/latest/02c-Interactive-Application-Security-Testing"
+              },
+              "help": {
+                "text": "Recommendation (Remediation Steps):\n1. Navigate to Project -> Pipelines. \n2. Open your repository CD Pipeline. \n3. Ensure a IAST scanning tool is present in your pipeline."
+              },
+              "shortDescription": {
+                "text": "DOS3580 - AppSec - ADO DevSecOps Control - Ensure Interactive Application Security Testing (IAST) (High)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://demo.devopsshield.com/DevOpsControl/DOS3580"
+            }
+          ]
+        }
+      },
+      "results": [],
+      "automationDetails": {
+        "description": {
+          "text": "SARIF-Export-Test-20260124-115452\n- Overview: Resource Compliance: 0% (0 out of 0)\n---------------------------------------------------------------\nDevOps Security Governance Overview - Non-Compliant Resources\n---------------------------------------------------------------\nSeverity: All\nResources: 0% (0 out of 0)\nAssignments: 0% (0 out of 0)\nInitiatives: 0% (0 out of 0)\nPolicies: 0% (0 out of 0)\n---------------------------------------------------------------\nSeverity: Critical\nResources: 0% (0 out of 0)\nAssignments: 0% (0 out of 0)\nInitiatives: 0% (0 out of 0)\nPolicies: 0% (0 out of 0)\n---------------------------------------------------------------\nSeverity: High\nResources: 0% (0 out of 0)\nAssignments: 0% (0 out of 0)\nInitiatives: 0% (0 out of 0)\nPolicies: 0% (0 out of 0)\n---------------------------------------------------------------\nSeverity: Medium\nResources: 0% (0 out of 0)\nAssignments: 0% (0 out of 0)\nInitiatives: 0% (0 out of 0)\nPolicies: 0% (0 out of 0)\n---------------------------------------------------------------\nSeverity: Low\nResources: 0% (0 out of 0)\nAssignments: 0% (0 out of 0)\nInitiatives: 0% (0 out of 0)\nPolicies: 0% (0 out of 0)\n---------------------------------------------------------------\nDevOps Metadata Explorer - Inventory\n---------------------------------------------------------------\nEnterprises: 0\nOrganizations: 0\nProjects: 0\nRepositories: 0\n---------------------------------------------------------------\nData Size (MB):\n---------------------------------------------------------------\n- Security Governance Data: 0.004014015\n- Resource Overview Data: 1.9073486E-06\n- Resource Inventory Data: 1.9073486E-06\n- Security Permissions Data: 1.9073486E-06\n---------------------------------------------------------------\n\n- Logs: Automation Tasks:\n-----------------------------------------------------\nId: 11ba7f6d-89b3-4f27-ae08-19cd732d9ed9\nTask: Data Resources\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: All Tenants - Total ADO Count = 0 - Organizations: 0, Organizations Policies and Pipeline Settings: 0, Organizations Resources: 0, Projects Pipeline Settings: 0, Projects Resources: 0, Projects Repositories Resources: 0, Security Permissions: 0\n | \nCalculated Resource Overviews: 0\n-----------------------------------------------------\n-----------------------------------------------------\nId: 03244863-23c2-4e6a-9e8c-a323a26dbe5b\nTask: Policy Evaluation\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: Total Resources = 0 evaluated - Compliant = 0, Non-Compliant = 0, Organizations = 0, Management Groups = 0, Policy Assignments = 0, Policy Initiatives = 0, Policy Definitions = 0, Resources not evaluated = 0 not enrolled in the current billing plan.\n-----------------------------------------------------\n-----------------------------------------------------\nId: 866bda9d-9d9e-4bbb-a329-0c7173020584\nTask: Policy Compliance\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: DevOps Shield - DevSecOps Assessment Report: de83f380-648a-4c84-bed0-bcd3fa026640, Total Compliances = 0 assignments calculated - Compliant Assignments  = 0, Non-Compliant Assignments = 0, Compliant Initiatives  = 0, Non-Compliant Initiatives = 0, Compliant Policies  = 0, Non-Compliant Policies = 0, Compliant Resources  = 0, Non-Compliant Resources = 0\n-----------------------------------------------------\n-----------------------------------------------------\nId: 68838a55-e36c-4441-b7bf-28b7cc79354d\nTask: Log Analytics\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: Total Count = 0\n-----------------------------------------------------\n-----------------------------------------------------\nId: ac34c39c-1f66-4dac-93d7-0526fe582b1c\nTask: Data Cleanup\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: Data Cleanup Log: 0 Automation Tasks, 0 Policy Compliances, 0 Policy Evaluations, 0 Resources, Reset Data Cache\n-----------------------------------------------------\n-----------------------------------------------------\nId: 59d129b3-2d7a-4dfd-8e4c-81df0fbcc1f1\nTask: DevSecOps Automation\nRun Date: Sat, 24 Jan 2026 11:54:52 GMT\nDuration: 0:00\nStatus: Completed\nDetails: DevSecOps Automation - Apply AppSec Configurations Report: -> No changes to apply.\n-----------------------------------------------------\n"
+        },
+        "id": "DevOpsShield-SecurityScanner",
+        "guid": "de83f380-648a-4c84-bed0-bcd3fa026640"
+      },
+      "defaultEncoding": "System.Text.UTF8Encoding+UTF8EncodingSealed",
+      "columnKind": "utf16CodeUnits",
+      "properties": {
+        "toolInfoId": "DevOpsShield-SecurityScanner>>0>>202601241154"
+      }
+    }
+  ],
+  "properties": {
+    "producer": "DevOpsShield",
+    "pipelineRunUrl": "Unknown",
+    "sourcePipelineId": "Unknown"
+  }
+}
