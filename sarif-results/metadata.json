@@ -1,12 +1,12 @@
 {
   "source": "Cad4DevOps-Cad4DevOps",
   "workflow": "test-sarif-export-fix.yml",
-  "run_id": "32181674190",
-  "run_number": "496",
-  "commit": "5b3516dff6681e5af1ae64e9fa50743c9e241c40",
+  "run_id": "32182509321",
+  "run_number": "497",
+  "commit": "2a68868242bfbfb76e210e9337c4f7b2c08263ed",
   "branch": "1397/merge",
-  "exported_at": "2026-08-18T20:27:08Z",
-  "assessment_id": "b1130156-472e-450b-a8de-b29bb6d1d56f",
+  "exported_at": "2026-08-18T20:38:22Z",
+  "assessment_id": "086e5dba-0cd1-4050-b796-63bc57989b0d",
   "file_size_kb": "1847",
   "cleanup_script_used": false,
   "sarif_source": "api-export"
