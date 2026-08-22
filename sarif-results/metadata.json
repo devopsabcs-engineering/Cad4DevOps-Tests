@@ -5,8 +5,8 @@
   "run_number": "746",
   "commit": "c734ea565cca38f16ec3fe4f5d9f3a7264f65ce0",
   "branch": "1420/merge",
-  "exported_at": "2026-08-22T12:57:59Z",
-  "assessment_id": "3a79be90-3cec-4139-a173-337afca95a4e",
+  "exported_at": "2026-08-22T14:02:40Z",
+  "assessment_id": "c8dae426-2302-41d8-8e8d-06570bb16dd8",
   "file_size_kb": "1847",
   "cleanup_script_used": false,
   "sarif_source": "api-export"
