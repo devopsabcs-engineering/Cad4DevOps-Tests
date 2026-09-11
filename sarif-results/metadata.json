@@ -5,9 +5,9 @@
   "run_number": "601",
   "commit": "d6b479da49a1faa7e568e0d94c7ad58077ccd911",
   "branch": "main",
-  "exported_at": "2026-09-11T14:18:50Z",
-  "assessment_id": "442e8a68-0d93-41c2-a327-e20136fc554c",
-  "file_size_kb": "1838",
+  "exported_at": "2026-09-11T16:51:21Z",
+  "assessment_id": "fe6ae5ec-f3f4-409c-8724-4659ac52750e",
+  "file_size_kb": "1847",
   "cleanup_script_used": false,
   "sarif_source": "api-export"
 }
